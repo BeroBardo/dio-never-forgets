@@ -1,0 +1,22 @@
+# NUNCA commite dados reais
+state.db
+dio_knowledge.db
+*.db-journal
+*.db-wal
+*.db-shm
+memory/
+sessions/
+config/
+.whatsapp/
+.env
+__pycache__/
+
+# Videos/document cache do Hermes
+document_cache/
+*.mp4
+*.mp3
+
+# Dados sensíveis
+*.bak
+*.key
+creds.json
