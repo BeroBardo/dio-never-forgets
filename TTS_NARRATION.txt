@@ -1,0 +1,10 @@
+Seu agente tem 354 megabytes de lixo no state ponto d b. 95 mil mensagens. 78 milhões de caracteres.
+A gente não joga tudo no prompt. A gente extrai. Resumos de 300 chars. Keywords. F T S 5 trigram.
+Resultado: 6.5 megabytes. 98 por cento de compressão. 54 vezes menor. 33 vezes menos tokens.
+Busca real: 0.4 milissegundos. Zero A P I. Zero embedding. Zero conta na nuvem.
+Open source. Roda no seu hardware. Seu contexto, seu controle.
+Até o setup tem personalidade. Detecta idioma. Escolhe o disco com mais espaço. Instala cron sozinho.
+Menos tokens igual menos grana. Seu bolso agradece. A A P I agradece.
+Código no GitHub. Estrela lá. Quer ajudar? Tem link pra café no README.
+Memória eterna. Como convém a um deus. KONO DIO DA!
+Clone. Rode. Esqueça o state ponto d b inchado. Dio Never Forgets.
