@@ -45,8 +45,33 @@ python3 setup.py
 # 3. Extraia o conhecimento do seu agente (roda em segundos)
 python3 dio_extract_knowledge.py
 
-# 4. Busque qualquer coisa no histórico com custo zero
-python3 dio_search_knowledge.py "sua busca" --limit 3
+## Dio Memory v2 (Engine Rápido & Incremental)
+
+Agora o **Dio Never Forgets** conta com um motor unificado em `dio_memory.py`:
+
+```bash
+# Sincronização incremental rápida (apenas mensagens novas desde o último checkpoint)
+python3 dio_memory.py sync
+
+# Buscar memórias e configurações por FTS5
+python3 dio_memory.py recall "bazzite gpu"
+python3 dio_memory.py recall "porta sunshine" --kind config
+
+# Gravar uma nova decisão ou preferência diretamente
+python3 dio_memory.py remember "Definido uso da porta 47990 no Sunshine" --kind config
+
+# Estatísticas do banco (dedup, categorias, checkpoints)
+python3 dio_memory.py stats
+```
+
+### Python API
+```python
+from dio_memory import DioMemory
+
+mem = DioMemory()
+mem.remember("Servidor web na porta 20129", kind="config")
+results = mem.recall("servidor web")
+# [{'id': 1, 'text': '...', 'kind': 'config', 'supersedes': None, ...}]
 ```
 
 ---
