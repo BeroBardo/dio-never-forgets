@@ -1,8 +1,10 @@
 #!/usr/bin/env python3
-"""DIO Knowledge Search — busca economica no banco leve."""
-import sqlite3, sys, time
+"""DIO Knowledge Search — busca economica no banco leve (volume mais espaçoso)."""
+import sqlite3, sys, time, os
+from dio_storage_resolve import pick_best_storage
 
-KNOW_DB = '/var/mnt/lentao/dio_shared/dio_knowledge.db'
+KNOW_DB_PATH, _free = pick_best_storage()
+KNOW_DB = KNOW_DB_PATH
 
 def search(query, limit=5):
     conn = sqlite3.connect(KNOW_DB)

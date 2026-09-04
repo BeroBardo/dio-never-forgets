@@ -1,13 +1,17 @@
 #!/usr/bin/env python3
 """
 DIO Knowledge Extractor — extrai resumos do state.db pra banco leve pesquisável.
-Cria dio_knowledge.db com FTS5, pronto pra busca econômica.
+Cria dio_knowledge.db (FTS5), no volume com mais espaço livre (ou env DIO_KNOWLEDGE_DB).
 """
-import sqlite3, json, re, hashlib, time
+import sqlite3, json, re, hashlib, time, os
 from pathlib import Path
+from dio_storage_resolve import pick_best_storage
 
-STATE_DB = Path('/run/media/system/HERMES/.hermes/state.db')
-KNOW_DB = Path('/var/mnt/lentao/dio_shared/dio_knowledge.db')
+STATE_DB_ENV = os.environ.get('HERMES_STATE_DB', '/run/media/system/HERMES/.hermes/state.db')
+STATE_DB = Path(STATE_DB_ENV)
+# KNOW_DB: escolha automática (env manual > volume mais espaçoso)
+KNOW_DB_PATH, _free = pick_best_storage()
+KNOW_DB = Path(KNOW_DB_PATH)
 
 def extract_keywords(text):
     """Extrai keywords-chave de texto."""

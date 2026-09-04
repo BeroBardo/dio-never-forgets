@@ -61,6 +61,20 @@ python3 dio_search_knowledge.py "banco de dados"
                         └──────────────────┘     └─────────────────┘
 ```
 
+
+## Armazenamento Inteligente
+
+O sistema **escolhe automaticamente** o volume com mais espaço livre para colocar o banco de conhecimento.
+
+- **Auto**: o resolver (`dio_storage_resolve.py`) varre os mounts e escolhe o mais espaçoso
+- **Manual**: defina `DIO_KNOWLEDGE_DB=/caminho/foo.db` no ambiente para forçar um local
+- A recomendação automática SEMPRE aponta pro volume com mais espaço livre
+
+```
+# Exemplo: forçar local manual
+DIO_KNOWLEDGE_DB=/home/user/dio.db python3 dio_search_knowledge.py "query"
+```
+
 ## Segurança
 
 - **Sem dados reais** — o repo contém apenas código e exemplos sintéticos
@@ -85,6 +99,20 @@ MIT — faça o que quiser.
 *Feito com 🩸 pelo DIO, a serviço de Ber The Bard.*
 
 ---
+
+
+## Armazenamento Inteligente
+
+O sistema **escolhe automaticamente** o volume com mais espaço livre para colocar o banco de conhecimento.
+
+- **Auto**: o resolver (`dio_storage_resolve.py`) varre os mounts e escolhe o mais espaçoso
+- **Manual**: defina `DIO_KNOWLEDGE_DB=/caminho/foo.db` no ambiente para forçar um local
+- A recomendação automática SEMPRE aponta pro volume com mais espaço livre
+
+```
+# Exemplo: forçar local manual
+DIO_KNOWLEDGE_DB=/home/user/dio.db python3 dio_search_knowledge.py "query"
+```
 
 ## Segurança do DIO
 
