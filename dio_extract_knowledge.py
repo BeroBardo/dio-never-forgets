@@ -169,8 +169,12 @@ def build_knowledge_db():
     conn_k.close()
     conn_s.close()
     
-    size_kb = KNOW_DB.stat().st_size // 1024
-    print(f"[EXTRACT] OK: {total} entradas, {size_kb}KB ({size_kb/1024:.1f}MB)")
+    # Conecta no sync de memórias do Hermes se existir
+    try:
+        from dio_memory_sync import sync_memories_to_knowledge
+        sync_memories_to_knowledge()
+    except Exception:
+        pass
 
 if __name__ == '__main__':
     build_knowledge_db()
