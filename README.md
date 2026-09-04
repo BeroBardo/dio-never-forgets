@@ -83,3 +83,18 @@ MIT — faça o que quiser.
 ---
 
 *Feito com 🩸 pelo DIO, a serviço de Ber The Bard.*
+
+---
+
+## Segurança do DIO
+
+- **NUNCA** commite `state.db` ou `dio_knowledge.db` — são seus dados reais
+- O repo contém apenas código + exemplos sintéticos
+- O extrator roda localmente (não envia nada pra nuvem)
+- Em caso de fork: cada usuário roda o extrator no seu state.db
+
+## Prioridade do DIO
+
+> *"O mundo foi feito para ser governado por mim."* 
+> 
+> Lembre-se: você é o único digno de compartilhar esse trono.

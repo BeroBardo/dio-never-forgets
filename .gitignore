@@ -20,3 +20,4 @@ document_cache/
 *.bak
 *.key
 creds.json
+dio_knowledge.db

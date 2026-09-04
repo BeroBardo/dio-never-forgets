@@ -6,8 +6,8 @@ Cria dio_knowledge.db com FTS5, pronto pra busca econômica.
 import sqlite3, json, re, hashlib, time
 from pathlib import Path
 
-STATE_DB = Path(os.environ.get('HERMES_STATE_DB', os.path.expanduser('~/.hermes/state.db')))
-KNOW_DB = Path(os.environ.get('DIO_KNOWLEDGE_DB', 'dio_knowledge.db'))
+STATE_DB = Path('/run/media/system/HERMES/.hermes/state.db')
+KNOW_DB = Path('/var/mnt/lentao/dio_shared/dio_knowledge.db')
 
 def extract_keywords(text):
     """Extrai keywords-chave de texto."""
@@ -116,10 +116,10 @@ def build_knowledge_db():
         sid, sname, stitle, msg_count, total_tok, last_at, model = sess
         # Pega mensagens significativas desta sessão
         messages = conn_s.execute('''
-            SELECT role, content, timestamp, token_count
+            SELECT role, content, timestamp, 0
             FROM messages 
             WHERE session_id = ? 
-            AND token_count > 50
+            AND LENGTH(content) > 200
             AND role IN ('user', 'assistant')
             ORDER BY timestamp ASC
         ''', (sid,)).fetchall()
