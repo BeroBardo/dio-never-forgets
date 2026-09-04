@@ -1,5 +1,8 @@
 #!/usr/bin/env python3
-"""DIO Knowledge Search — busca economica no banco leve (volume mais espaçoso)."""
+"""
+DIO Knowledge Search — busca econômica no banco leve.
+Lê dio.conf, variáveis de ambiente ou auto-detecta o banco.
+"""
 import sqlite3, sys, time, os
 from dio_storage_resolve import pick_best_storage
 
@@ -7,6 +10,11 @@ KNOW_DB_PATH, _free = pick_best_storage()
 KNOW_DB = KNOW_DB_PATH
 
 def search(query, limit=5):
+    if not os.path.exists(KNOW_DB):
+        print(f"ERRO: Banco de conhecimento não encontrado em: {KNOW_DB}")
+        print("Execute 'python3 dio_extract_knowledge.py' primeiro.")
+        return []
+
     conn = sqlite3.connect(KNOW_DB)
     fts_query = ' OR '.join(query.split())
     try:
@@ -17,7 +25,7 @@ def search(query, limit=5):
             WHERE knowledge_fts MATCH ?
             ORDER BY rank LIMIT ?
         ''', (fts_query, limit)).fetchall()
-    except:
+    except Exception:
         q = f'%{query}%'
         rows = conn.execute('''
             SELECT summary, keywords, timestamp, role, session_title
@@ -38,11 +46,14 @@ if __name__ == '__main__':
     limit = 5
     if '--limit' in args:
         idx = args.index('--limit')
-        limit = int(args[idx+1])
-        del args[idx:idx+2]
+        try:
+            limit = int(args[idx+1])
+            del args[idx:idx+2]
+        except (IndexError, ValueError):
+            pass
     query = ' '.join(args)
     if not query:
-        print("USO: dio_search_knowledge.py 'query'")
+        print("USO: dio_search_knowledge.py 'query' [--limit N]")
         sys.exit(1)
     results = search(query, limit)
     if not results:
