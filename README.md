@@ -72,7 +72,7 @@ python3 dio_search_knowledge.py "sua busca" --limit 3
 
 Se o **Dio Never Forgets** te poupou gigabytes de RAM, salvou seu limite de contexto ou cortou seus custos de API com tokens:
 
-- **Pix (Brasil):** `53.556.664/0001-06` (MEI Bernardo Victer Alves)
+- **Pix (Brasil):** `bevicter@gmail.com`
 - **GitHub Sponsors / Crypto:** Em breve
 - ⭐ **Deixe uma estrela no repositório!** Isso ajuda o projeto a alcançar mais pessoas.
 
